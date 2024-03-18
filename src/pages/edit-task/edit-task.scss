@@ -1,0 +1,4 @@
+@import "../../mixins";
+.edit-task {
+    @include main-style();
+}

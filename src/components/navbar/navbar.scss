@@ -1,0 +1,81 @@
+    @import "../../mixins";
+    .navbar {
+        width: 100%;
+        height: 60px;
+        background-image: url('7.jpg');
+        background-size: 10%;
+        background-position: center;
+        color: #fff;
+        padding: 0 3rem;
+        @include d-flex(row,
+        space-between,
+        center);
+        .title {
+            color: black;
+        }
+        .menu {
+            flex: 1;
+            margin-left: 2rem;
+            ul {
+                @include d-flex(row,
+                flex-start,
+                center);
+                gap: 1rem;
+                li {
+                    a {
+                        border: 1px solid black;
+                        /* Рамка товщиною 1px і чорного кольору */
+                        padding: 5px;
+                        /* Відступ від тексту до рамки */
+                        display: inline-block;
+                        background-color: rgb(236, 187, 210);
+                        border-radius: 8px;
+                    }
+                }
+            }
+        }
+        .condition {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .navbar {
+            .condition {
+                display: block;
+                margin-left: 1rem;
+                cursor: pointer;
+            }
+            .menu {
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                background-color: rgb(20, 4, 48);
+                position: fixed;
+                left: -100vw;
+                top: 0;
+                z-index: 3;
+                transition: all 0.3s linear;
+                &.open {
+                    left: 0;
+                }
+                ul {
+                    @include d-flex(column,
+                    center,
+                    center);
+                    height: 100%;
+                    gap: 3rem;
+                    position: relative;
+                    .close {
+                        display: block;
+                        position: absolute;
+                        top: 1rem;
+                        right: 2rem;
+                        cursor: pointer;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
